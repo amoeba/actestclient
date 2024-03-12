@@ -95,8 +95,9 @@ namespace TestClient.Net
 			this.networkThread = new Thread(NetworkThreadStart);
 
 			this.World = "Disconnected";
+            localAddr = new IPEndPoint(0, 0);
 
-			Instance = this;
+            Instance = this;
 		}
 
 		// public NetworkManager(int port)
@@ -591,7 +592,9 @@ namespace TestClient.Net
 			Debug.WriteLine("Network Thread Start");
 
 			this.connection = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-			this.connection.Bind(this.localAddr);
+            //this.connection.Bind(this.localAddr);
+            //this.connection.Bind(new EndPoint(0));k
+            this.connection.Bind(localAddr);
 			this.shouldBeRunning = true;
 
 			DoReceive();

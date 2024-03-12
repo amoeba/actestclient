@@ -3,7 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace TestClient.Crypto
 {
-	internal static class Checksum
+	// TODO: This was internal but I needed to test it
+	public static class Checksum
 	{
 		public static uint GetMagicNumber<T>(ref T packet, int size, bool includeSize) where T : struct
 		{

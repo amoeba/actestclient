@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 using TestClient.Net;
 using TestClient.Net.Messages;
-using TestClient.Scripts;
+//using TestClient.Scripts;
 using TestClient.Ux;
 
 namespace TestClient
@@ -23,7 +23,7 @@ namespace TestClient
 		private static DisplayManager displayManager = null;
 
 		private static NetworkManager networkManager = null;
-		private static ScriptManager scriptManager = null;
+		//private static ScriptManager scriptManager = null;
 
 		private static IConfiguration config = null;
 
@@ -31,7 +31,7 @@ namespace TestClient
 		{
 			//networkManager = new NetworkManager(port);
 			networkManager.Configure(port);
-			scriptManager.SetNetworkManager(networkManager);
+			//scriptManager.SetNetworkManager(networkManager);
 		}
 
 		static void Main(string[] args)
@@ -44,8 +44,8 @@ namespace TestClient
 			commandManager = new CommandManager();
 			displayManager = new DisplayManager();
 			networkManager = new NetworkManager();
-			scriptManager = new ScriptManager("script", config["script:python_lib"]);
-			scriptManager.SetDisplayManager(displayManager);
+			//scriptManager = new ScriptManager("script", config["script:python_lib"]);
+			//scriptManager.SetDisplayManager(displayManager);
 
 			commandManager.CreateNetworkManager = (port) => CreateNetworkManager(port);
 			commandManager.ConnectServer = (serv, port, user, pass) =>
@@ -55,7 +55,7 @@ namespace TestClient
 				networkManager.Connect(serv, port, user, pass);
 			};
 
-			commandManager.ScriptReload = () => scriptManager.Reload();
+			//commandManager.ScriptReload = () => scriptManager.Reload();
 
 			MessageParser.Initialize("messages.xml");
 
@@ -68,6 +68,7 @@ namespace TestClient
 				//displayManager.Write(-15, 0, networkManager == null ? "Disconnected" : networkManager.World);
 
 				//displayManager.Write(0, -1, "> ");
+				networkManager.Connect("10.211.55.2", 9000, "test", "test");
 
 				commandManager.CheckInput();
 
