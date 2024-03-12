@@ -28,8 +28,8 @@ namespace TestClient.Ux
 
 			Console.Clear();
 
-			Console.WindowTop = 0;
-			Console.BufferHeight = Console.WindowHeight;
+			// Console.WindowTop = 0;
+			// Console.BufferHeight = Console.WindowHeight;
 		}
 
 		public System.Drawing.Point GetCursor()
